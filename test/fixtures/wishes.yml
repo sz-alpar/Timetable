@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  to_be_held: false
+  when: 2012-01-29 11:42:06
+  important: false
+
+two:
+  to_be_held: false
+  when: 2012-01-29 11:42:06
+  important: false

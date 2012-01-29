@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  start_time: 2012-01-29 12:01:22
+  repeats: 1
+
+two:
+  start_time: 2012-01-29 12:01:22
+  repeats: 1
