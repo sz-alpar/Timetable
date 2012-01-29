@@ -11,10 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120129100122) do
+ActiveRecord::Schema.define(:version => 20120129140938) do
 
   create_table "course_types", :force => true do |t|
-    t.string   "type"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -32,10 +32,12 @@ ActiveRecord::Schema.define(:version => 20120129100122) do
     t.datetime "hours"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "teach_id"
+    t.integer  "course_type_id"
   end
 
   create_table "roles", :force => true do |t|
-    t.string   "type"
+    t.string   "permission"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -43,6 +45,8 @@ ActiveRecord::Schema.define(:version => 20120129100122) do
   create_table "teaches", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "course_id"
   end
 
   create_table "timesheets", :force => true do |t|
@@ -50,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20120129100122) do
     t.integer  "repeats"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "hour_id"
   end
 
   create_table "users", :force => true do |t|
@@ -57,6 +62,7 @@ ActiveRecord::Schema.define(:version => 20120129100122) do
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "role_id"
   end
 
   create_table "wishes", :force => true do |t|
@@ -65,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20120129100122) do
     t.boolean  "important"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "teach_id"
+    t.integer  "hour_id"
   end
 
 end
