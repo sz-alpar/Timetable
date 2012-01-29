@@ -5,3 +5,22 @@
  *= require_self
  *= require_tree . 
 */
+
+@CHARSET "UTF-8";
+
+body {
+	font-family: "Arial", "Helvetica", sans-serif;
+	color: #444;
+}
+
+div.centered {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	background-color: #d0deea;
+}
+
+.errorCell {
+	font-size: small;
+	padding-bottom: 5px;
+}
