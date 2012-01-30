@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>To be held:</b>
+  <%= @wish.to_be_held %>
+</p>
+
+<p>
+  <b>When:</b>
+  <%= @wish.when %>
+</p>
+
+<p>
+  <b>Important:</b>
+  <%= @wish.important %>
+</p>
+
+
+<%= link_to 'Edit', edit_wish_path(@wish) %> |
+<%= link_to 'Back', wishes_path %>

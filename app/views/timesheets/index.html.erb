@@ -1,0 +1,25 @@
+<h1>Listing timesheets</h1>
+
+<table>
+  <tr>
+    <th>Start time</th>
+    <th>Repeats</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @timesheets.each do |timesheet| %>
+  <tr>
+    <td><%= timesheet.start_time %></td>
+    <td><%= timesheet.repeats %></td>
+    <td><%= link_to 'Show', timesheet %></td>
+    <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
+    <td><%= link_to 'Destroy', timesheet, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Timesheet', new_timesheet_path %>
