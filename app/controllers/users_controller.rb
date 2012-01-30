@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authenticate, :except => :index
+  
   # GET /users
   # GET /users.json
   def index
@@ -80,4 +82,13 @@ class UsersController < ApplicationController
       format.json { head :ok }
     end
   end
+  
+  private
+    def authenticate
+      if session[:user_id].nil?
+        redirect_to login_path
+      else
+        true
+      end
+    end
 end

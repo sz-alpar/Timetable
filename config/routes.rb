@@ -1,8 +1,12 @@
 Timetable::Application.routes.draw do
   root :to => 'login#index'
   
+  match "/login" => "login#index"
+  
   get "login/index"
   post "login/verify"
+  
+  resources :users, :courses, :course_types, :hours, :teaches, :roles, :wishes, :timesheets
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
