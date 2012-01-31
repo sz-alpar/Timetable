@@ -1,4 +1,6 @@
 class CourseTypesController < ApplicationController
+  before_filter :authenticate_for_admin
+  
   # GET /course_types
   # GET /course_types.json
   def index

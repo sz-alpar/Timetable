@@ -1,10 +1,17 @@
 Timetable::Application.routes.draw do
+  get "teacher/index"
+
   root :to => 'login#index'
   
-  match "/login" => "login#index"
+  match "/login" => "login#index", :as => "login"
+  match "/login/verify" => "login#verify", :as => "login_verify", :via => :post
+  match "/logout" => "login#destroy", :as => "logout"
   
-  get "login/index"
-  post "login/verify"
+  match "/admin" => "admin#index", :as => "admin"
+  match "/admin/new_teacher" => "admin#new_teacher", :as => "admin_new_teacher"
+  match "/admin/save_teacher" => "admin#save_teacher", :as => "admin_save_teacher", :via => :post
+  
+  match "/teacher" => "teacher#index", :as => "teacher"
   
   resources :users, :courses, :course_types, :hours, :teaches, :roles, :wishes, :timesheets
 

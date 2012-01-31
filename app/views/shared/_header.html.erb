@@ -1,0 +1,20 @@
+<table id="userBar">
+<tr>
+	<% if user_name.nil? %>
+		<td style="text-align: right;"></td>
+       	<td style="text-align: right; width: 120px;"><a href="<%= login_path %>"><%= t(:login) %></a></td>
+    <% else 
+    	if admin %>
+		<td style="text-align: right;"><%= t(:welcome) %>, <b><%= user_name %></b> &nbsp;&nbsp;&nbsp;&nbsp;</td>
+		<td style="text-align: center; width: 120px;"><a href="<%= "/admin" %>"><%= t(:edit_timetable) %></a></td>
+		<td style="text-align: center; width: 120px;"><a href="<%= admin_new_teacher_path %>"><%= t(:new_teacher) %></a></td>
+		<td style="text-align: center; width: 120px;"><a href="<%= "/admin" %>"><%= t(:edit_teacher) %></a></td>
+        <td style="text-align: center; width: 100px;"><a href="<%= logout_path %>"><%= t(:logout) %></a></td>	
+    <% 	else %>
+    	<td style="text-align: right;"><%= t(:welcome) %>, <b><%= user_name %></b> &nbsp;&nbsp;&nbsp;&nbsp;</td>
+    	<td style="text-align: center; width: 120px;"><a href="<%= "/teacher" %>"><%= t(:edit_wishes) %></a></td>
+        <td style="text-align: center; width: 100px;"><a href="<%= logout_path %>"><%= t(:logout) %></a></td>	
+   	<% 	end
+   	   end %>
+</tr>
+</table>

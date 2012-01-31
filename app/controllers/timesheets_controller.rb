@@ -1,4 +1,6 @@
 class TimesheetsController < ApplicationController
+  before_filter :authenticate_for_admin
+  
   # GET /timesheets
   # GET /timesheets.json
   def index

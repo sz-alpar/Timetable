@@ -1,0 +1,22 @@
+<table style="margin-left: auto; margin-right: auto; width: 90%;">
+	<tr style="background-color: white;">
+		<th style="width: 50px;"><%= t(:hour)%></th>
+		<th><%= t(:monday)%></th>
+		<th><%= t(:tuesday)%></th>
+		<th><%= t(:wednesday)%></th>
+		<th><%= t(:thursday)%></th>
+		<th><%= t(:friday)%></th>
+	</tr>
+	<% 6.times do |i|%>
+	<tr <%= "style='background-color:" + ((i % 2 == 0) ? "#ccc;'" : "#ddd'") %> >
+		<td style="text-align: center;">
+			<%= 8 + (i*2) %>:00
+		</td>
+		<% 5.times do |j| %>
+			<td style="text-align: center;">
+				<%= time_table_cells[5*i + j] unless time_table_cells.nil?%>
+			</td>			
+		<% end %>
+	</tr>
+	<% end %>
+</table>

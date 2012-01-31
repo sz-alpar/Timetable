@@ -1,15 +1,10 @@
 class LoginController < ApplicationController
+  before_filter :redirect_if_already_logged_in, :except => :destroy
+  
   def index
-    
   end
 
   def verify
-    if alreadyLoggedIn?
-      flash.now[:notice] = "Already logged in."
-      render "index"
-      return
-    end
-    
     if params[:username] == ""
       usernameError = "Username field empty."
     end
@@ -32,11 +27,11 @@ class LoginController < ApplicationController
       session[:user_id] = user.id
       
       if user.role.admin?
-        flash.now[:notice] = "Admin user logged in."
-        render "index"
+        redirect_to admin_path
+        return
       else
-        flash.now[:notice] = "Normal user logged in."
-        render "index"
+        redirect_to teacher_path
+        return
       end
     else
       flash.now[:params] = params
@@ -46,11 +41,23 @@ class LoginController < ApplicationController
   end
 
   def destroy
-    reset_session
+    if already_logged_in?    
+      reset_session
+    end
+    redirect_to login_path
   end
 
-  def alreadyLoggedIn?
-    !session[:user_id].nil?
+  def already_logged_in?
+    unless session[:user_id].nil?
+      true  
+    end
+  end
+  
+  private
+  def redirect_if_already_logged_in
+    if already_logged_in?
+      redirect_to admin_path
+    end    
   end
 
 end

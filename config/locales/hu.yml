@@ -1,8 +1,11 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-hu:
-  login: "Belépés"
-  username: "Felhasználónév"
-  password: "Jelszó"
-  submit: "Belép"
+en:
+  login: "Login"
+  username: "Username"
+  password: "Password"
+  submit: "Submit"
+  admin: "Adminisztráció"
+  save: "Elment"
+  add_course: "Még egy tantárgy"

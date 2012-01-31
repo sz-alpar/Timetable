@@ -10,8 +10,12 @@
 	<title>Timetable</title>
 </head>
 <body>
+	<div class="centered">
+
+	<%= render :partial => "shared/header", :locals => {:user_name => @user_name, :admin => @admin } %>
 
 <%= yield %>
 
+	</div>
 </body>
 </html>

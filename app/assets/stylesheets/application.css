@@ -24,3 +24,25 @@ div.centered {
 	font-size: small;
 	padding-bottom: 5px;
 }
+
+table#userBar {
+	width: 100%;
+	background-color: #ddd;
+}
+
+a:link {
+	font-family: "Arial", "Helvetica", sans-serif;
+	font-weight: bold;
+	color: gray;
+	text-decoration: none;
+}
+
+a:visited {
+	color: gray;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #ef6161;
+	text-decoration: none;
+}

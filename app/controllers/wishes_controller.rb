@@ -1,4 +1,6 @@
 class WishesController < ApplicationController
+  before_filter :authenticate_for_admin
+  
   # GET /wishes
   # GET /wishes.json
   def index

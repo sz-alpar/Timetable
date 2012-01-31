@@ -6,3 +6,6 @@ en:
   username: "Username"
   password: "Password"
   submit: "Submit"
+  admin: "Administration"
+  save: "Save"
+  add_course: "Add course"

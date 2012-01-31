@@ -1,4 +1,6 @@
 class HoursController < ApplicationController
+  before_filter :authenticate_for_admin
+  
   # GET /hours
   # GET /hours.json
   def index

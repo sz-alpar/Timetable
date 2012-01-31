@@ -1,41 +1,32 @@
-<div class="centered">
-	<h1 style="text-align: center;"><%= t(:login)%></h1>
-	<%= form_tag "/login/verify" do %>
-	<table style="margin-left: auto; margin-right: auto; width: 250px;">
-		<tr>
-			<td style="text-align: right;"><%= t(:username) %></td>
-			<td> <%= text_field_tag :username, (flash[:params][:username] unless flash[:params].nil?) %> </td>
-		</tr>
-		<tr>
-			<td></td>
-			<td class="errorCell" style="color: red;">
-			<%= flash[:usernameError]%>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: right"><%= t(:password) %></td>
-			<td> <%= password_field_tag :password, (flash[:params][:password] unless flash[:params].nil?) %> </td>
-		</tr>
-		<tr>
-			<td></td>
-			<td class="errorCell" style="color: red;">
-			<%= flash[:passwordError]%>
-			</td>
-		</tr>
-		<tr>
-			<td></td>
-			<td style="text-align: right"> <%= submit_tag t(:submit) %> </td>
-		</tr>
-		<tr>
-			<td class="errorCell" style="color: red; text-align: center;" colspan="2">
-			<%= flash[:error] %>
-			</td>
-		</tr>
-		<tr>
-			<td style="text-align: center;" colspan="2">
-			<%= flash[:notice] %>
-			</td>
-		</tr>
-	</table>
-	<% end %>
-</div>
+<h1 style="text-align: center;"><%= t(:login)%></h1>
+
+<%= form_tag login_verify_path do %>
+<table style="margin-left: auto; margin-right: auto; width: 250px;">
+	<tr>
+		<td style="text-align: right;"><%= t(:username) %></td>
+		<td> <%= text_field_tag :username, (flash[:params][:username] unless flash[:params].nil?) %> </td>
+	</tr>
+	<tr>
+		<td></td>
+		<td class="errorCell" style="color: red;"> <%= flash[:usernameError]%> </td>
+	</tr>
+	<tr>
+		<td style="text-align: right"><%= t(:password) %></td>
+		<td> <%= password_field_tag :password, (flash[:params][:password] unless flash[:params].nil?) %> </td>
+	</tr>
+	<tr>
+		<td></td>
+		<td class="errorCell" style="color: red;"> <%= flash[:passwordError]%> </td>
+	</tr>
+	<tr>
+		<td></td>
+		<td style="text-align: right"> <%= submit_tag t(:submit) %> </td>
+	</tr>
+	<tr>
+		<td class="errorCell" style="color: red; text-align: center;" colspan="2"> <%= flash[:error] %> </td>
+	</tr>
+	<tr>
+		<td style="text-align: center;" colspan="2"> <%= flash[:notice] %> </td>
+	</tr>
+</table>
+<% end %>
