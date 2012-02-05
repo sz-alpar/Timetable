@@ -6,15 +6,31 @@
     <% else 
     	if admin %>
 		<td style="text-align: right;"><%= t(:welcome) %>, <b><%= user_name %></b> &nbsp;&nbsp;&nbsp;&nbsp;</td>
-		<td style="text-align: center; width: 120px;"><a href="<%= "/admin" %>"><%= t(:edit_timetable) %></a></td>
+		<td style="text-align: center; width: 120px;"><a href="<%= admin_timesheet_path %>"><%= t(:timetable) %></a></td>
+		<td style="text-align: center; width: 120px;"><a href="<%= admin_edit_timesheet_path %>"><%= t(:edit_timetable) %></a></td>
 		<td style="text-align: center; width: 120px;"><a href="<%= admin_new_teacher_path %>"><%= t(:new_teacher) %></a></td>
-		<td style="text-align: center; width: 120px;"><a href="<%= "/admin" %>"><%= t(:edit_teacher) %></a></td>
+		<td style="text-align: center; width: 120px;"><a href="<%= admin_show_edit_teacher_path %>"><%= t(:edit_teacher) %></a></td>
         <td style="text-align: center; width: 100px;"><a href="<%= logout_path %>"><%= t(:logout) %></a></td>	
     <% 	else %>
     	<td style="text-align: right;"><%= t(:welcome) %>, <b><%= user_name %></b> &nbsp;&nbsp;&nbsp;&nbsp;</td>
-    	<td style="text-align: center; width: 120px;"><a href="<%= "/teacher" %>"><%= t(:edit_wishes) %></a></td>
+    	<td style="text-align: center; width: 120px;"><a href="<%= teacher_timesheet_path(user_id) %>"><%= t(:timetable) %></a></td>
+    	<!-- <td style="text-align: center; width: 120px;"><a href="<%= "/teacher" %>"><%= t(:edit_wishes) %></a></td> -->
         <td style="text-align: center; width: 100px;"><a href="<%= logout_path %>"><%= t(:logout) %></a></td>	
    	<% 	end
-   	   end %>
+   	 end %>
+   	 <td style="text-align: right; width: 25px;">
+   	 <%  if params[:locale] == "en" %>
+			<a href="<%= request.path + "?locale=en"%>"><img src="/images/us.png" alt="EN" style="border: 0px;" width="19" height="14"/></a>
+    <% else %>
+    		<a href="<%= request.path + "?locale=en"%>"><img src="/images/us.png" alt="EN" style="border: 0px;"/></a>
+	<% end %>
+	</td>
+	<td style="text-align: right; width: 25px;">
+	<% if params[:locale] == "hu"%>      
+			<a href="<%= request.path + "?locale=hu"%>"><img src="/images/hu.png" alt="HU" style="border: 0px" width="19" height="14"/></a>
+	 <% else %>      
+			<a href="<%= request.path + "?locale=hu"%>"><img src="/images/hu.png" alt="HU" style="border: 0px;"/></a>
+	 <% end %>
+	 </td>      
 </tr>
 </table>

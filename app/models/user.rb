@@ -5,6 +5,6 @@ class User < ActiveRecord::Base
   # http://duanesbrain.blogspot.com/2006/05/ruby-on-rails-hasone-versus-belongsto.html
   belongs_to :role
   
-  has_many :teaches
-  has_many :courses, :through => :teacheses
+  has_many :teaches, :dependent => :destroy
+  has_many :courses, :through => :teaches
 end

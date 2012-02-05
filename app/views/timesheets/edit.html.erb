@@ -1,6 +1,7 @@
-<h1>Editing timesheet</h1>
+<h1 style="text-align: center;"><%= t(:edit_timesheet)%></h1>
 
-<%= render 'form' %>
+<div id="form_container">
+	
+<%= render :partial => "timesheets/edit_timetable", :locals => {:all_grouped_options => @all_grouped_options, :params => params } %>
 
-<%= link_to 'Show', @timesheet %> |
-<%= link_to 'Back', timesheets_path %>
+</div>

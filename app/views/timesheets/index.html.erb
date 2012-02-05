@@ -1,25 +1,3 @@
-<h1>Listing timesheets</h1>
+<h1 style="text-align: center;"><%= t(:timesheet)%></h1>
 
-<table>
-  <tr>
-    <th>Start time</th>
-    <th>Repeats</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @timesheets.each do |timesheet| %>
-  <tr>
-    <td><%= timesheet.start_time %></td>
-    <td><%= timesheet.repeats %></td>
-    <td><%= link_to 'Show', timesheet %></td>
-    <td><%= link_to 'Edit', edit_timesheet_path(timesheet) %></td>
-    <td><%= link_to 'Destroy', timesheet, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Timesheet', new_timesheet_path %>
+<%= render :partial => "timesheets/show_timetable", :locals => {:time_table_cells => @time_table_cells} %>

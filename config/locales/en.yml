@@ -3,9 +3,39 @@
 
 en:
   login: "Login"
-  username: "Username"
+  logout: "Logout"
+  username: "Name"
+  name: "Name"
   password: "Password"
-  submit: "Submit"
+  submit: "Login"
   admin: "Administration"
   save: "Save"
   add_course: "Add course"
+  remove_course: "Remove course"
+  confirm_teacher_delete: "Are you sure?"
+  
+  timetable: "Timesheet"
+  edit_timetable: "Edit timesheet"
+  new_teacher: "Add new teacher"
+  edit_teacher: "Edit teacher"
+  hour: "Hour"
+  monday: "Monday"
+  tuesday: "Tuesday"
+  wednesday: "Wednesday"
+  thursday: "Thursday"
+  friday: "Friday"
+  
+  hours: "Hours"
+  week: "Week"
+  
+  confirm_delete: "Are you sure?"
+  
+  teacher: "Teacher"
+  edit: "Edit"
+  
+  course_title: "Course title:"
+  course_code: "Code:"
+  course_description: "Description:"
+  course_semester: "Semester:"
+  
+  edit_timesheet: "Edit timesheet"

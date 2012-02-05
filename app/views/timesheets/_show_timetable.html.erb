@@ -12,9 +12,14 @@
 		<td style="text-align: center;">
 			<%= 8 + (i*2) %>:00
 		</td>
-		<% 5.times do |j| %>
+		<% 5.times do |j| 
+			count = j*6 + i
+			cell_id = "cell_" + count.to_s
+			selected = params[cell_id] unless params.nil?
+			submit_form = "submit_form('" + cell_id.to_s + "')"
+		%>
 			<td style="text-align: center;">
-				<%= time_table_cells[5*i + j] unless time_table_cells.nil?%>
+				<%= time_table_cells[count] %>
 			</td>			
 		<% end %>
 	</tr>

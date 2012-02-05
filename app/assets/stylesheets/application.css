@@ -11,6 +11,8 @@
 body {
 	font-family: "Arial", "Helvetica", sans-serif;
 	color: #444;
+	margin: 0px;
+	padding: 0px;
 }
 
 div.centered {
@@ -21,6 +23,7 @@ div.centered {
 }
 
 .errorCell {
+	color: red;
 	font-size: small;
 	padding-bottom: 5px;
 }

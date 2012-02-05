@@ -1,11 +1,42 @@
 # Sample localization file for English. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
-  login: "Login"
-  username: "Username"
-  password: "Password"
-  submit: "Submit"
+hu:
+  login: "Belépés"
+  logout: "Kilépés"
+  username: "Név"
+  name: "Név"
+  password: "Jelszó"
+  submit: "Belép"
   admin: "Adminisztráció"
   save: "Elment"
-  add_course: "Még egy tantárgy"
+  add_course: "Tantárgy hozzáadása"
+  remove_course: "Törlés"
+  confirm_teacher_delete: "Biztosan szeretne törölni?"
+
+  timetable: "Órarend"
+  edit_timetable: "Órarend szerkesztése"
+  new_teacher: "Új tanár"
+  edit_teacher: "Tanárok szerkesztése"
+  hour: "Óra"
+  monday: "Hétfő"
+  tuesday: "Kedd"
+  wednesday: "Szerda"
+  thursday: "Csütörtök"
+  friday: "Péntek"
+  
+  hours: "Óra"
+  week: "Hét"
+  
+  confirm_delete: "Biztosan szeretné törölni?"
+  
+  teacher: "Tanár"
+  edit: "Szerkesztés"
+  
+  course_title: "Kurzus címe:"
+  course_code: "Kód:"
+  course_description: "Leírás:"
+  course_semester: "Félév:"
+  
+  timesheet: "Órarend"
+  edit_timesheet: "Órarend szerkesztése"

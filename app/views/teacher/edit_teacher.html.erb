@@ -1,0 +1,128 @@
+<h1 style="text-align: center;"><%= t(:edit_teacher)%></h1>
+<table style="width: 100%" cellspacing="0" cellpadding="0">
+	<tr>
+		<td id="teachersColumn" valign="top">
+			<table style="width: 100%; text-align:center;" cellspacing="0" cellpadding="0">
+				<th>
+					<tr style="background-color: #eee;">
+						<td style="font-size: x-large; font-weight: bold;" colspan="2">
+							<%= t(:teacher) %>
+						</td>
+					</tr>
+				</th>
+				<% @teachers.each do |teacher| %>
+				<tr>
+					<% unless @edited_user_id.nil? 
+						if @edited_user_id.to_i == teacher.id.to_i %>
+						<tr style="background-color: white;">
+					<% 	else %>
+						<tr>
+					<% 	end %>
+					<% else %>
+						<tr>
+					<% end %>
+					<td>
+						<a href="<%= admin_edit_teacher_path(teacher.id)%>"><%= teacher.name%></a>
+					</td>
+					<td><%= link_to "x", admin_delete_teacher_path(teacher.id), :confirm => t(:confirm_teacher_delete)%></td>
+				</tr>
+				<% end %>
+			</table>
+		</td>
+		<td id="editTeacherColumn" valign="top">
+			<div style="background-color: #eee; font-size: x-large; font-weight: bold; text-align: center;">
+				<%= t(:edit) %>
+			</div>
+				
+			<%= form_tag admin_show_edit_teacher_path do %>
+			<table style="margin-left: auto; margin-right: auto; width: 500px;">
+				<tr>
+					<td style="text-align: right;"><%= t(:name) %></td>
+					<td colspan="2"> <%= text_field_tag :username, (flash[:params][:username] unless flash[:params].nil?), :size => 28, :disabled => @disabled %> </td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="errorCell" style="color: red;" colspan="2"> <%= flash[:usernameError]%> </td>
+				</tr>
+				<tr>
+					<td style="text-align: right;"><%= t(:password) %></td>
+					<td colspan="2"> <%= text_field_tag :password, (flash[:params][:password] unless flash[:params].nil?), :size => 28, :disabled => @disabled  %> </td>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="errorCell" style="color: red;" colspan="2"> <%= flash[:passwordError]%> </td>
+				</tr>
+				<% @nr_of_courses.times do |i|
+					course_fields = ["course_title", "course_code", "course_description", "course_semester"]
+				%>
+				<tr>
+					<td colspan="3" style="background-color: gray;"></td>
+				</tr>
+				<% course_fields.each_with_index do |course_field, j|
+						course_field_tag_id = course_field + i.to_s
+						
+						helper_tag = ""
+						options_for_select = ""
+						message_tag_and_size = ""
+						case course_field
+						when "course_description"
+							helper_tag = "text_area_tag"
+							message_tag_and_size = "(flash[:params][course_field_tag_id] unless flash[:params].nil?), :size => 28"
+						when "course_semester"
+							helper_tag = "select_tag"
+							options_for_select = "options_for_select([['1', 1], ['2', 2], ['3', 3], ['4', 4], ['5', 5], ['6', 6], ['7', 7], ['8', 8]], (flash[:params][course_field_tag_id] unless flash[:params].nil?))"
+						else
+							helper_tag = "text_field_tag"
+							message_tag_and_size = "(flash[:params][course_field_tag_id] unless flash[:params].nil?), :size => 28"
+						end
+				%>
+				<tr>
+					<td style="text-align: right"><%= t(course_field) %></td>
+					<td colspan="2"> <%= eval helper_tag + " course_field_tag_id, " + options_for_select + message_tag_and_size + ", :disabled => @disabled"  %> </td>
+					<% if j == 0 %>
+						<td>
+							<%= submit_tag t(:remove_course), :name => ((i >= @course_ids.length) ? "-1" : @course_ids[i]), :confirm => t(:confirm_delete), :disabled => @disabled %>
+						</td>
+					<% end %>
+				</tr>
+				<tr>
+					<td></td>
+					<td class="errorCell" style="color: red;" colspan="2"> <%= flash[:courseError][course_field_tag_id] unless flash[:courseError].nil? %> </td>
+				</tr>
+					<% end %>
+					<% @course_types.each do |course_type|
+							tag_id = "course" + i.to_s + "_type_id_" + course_type.id.to_s
+					%>
+					<tr>
+						<td></td>
+						<td style="text-align: right;"><%= course_type.name %></td>
+						<td style="text-align: left;">
+							<%= select_tag tag_id, options_for_select([['0', 0], ['2', 2], ['4', 4], ['6', 6], ['8', 8], ['10', 10]], (flash[:params][tag_id] unless flash[:params].nil?)), :disabled => @disabled %> <%= t(:hours)%>/<%= t(:week)%>
+						</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td class="errorCell" style="color: red;" colspan="2"> 
+							<%= flash[:courseTypeError][tag_id] unless flash[:courseTypeError].nil? %> 
+						</td>
+					</tr>
+					<% end %>
+				<% end %>
+				<tr>
+					<td></td>
+					<td style="text-align: left" colspan="2"> <%= submit_tag t(:add_course), :name => :add_course, :disabled => @disabled %> </td>
+				</tr>
+				<tr>
+					<td></td>
+					<td style="text-align: right" colspan="2"> <%= submit_tag t(:save), :name => :update_teacher, :disabled => @disabled %> </td>
+				</tr>
+				<tr>
+					<td class="errorCell" style="color: red; text-align: center;" colspan="3"> <%= flash[:error] %> </td>
+				</tr>
+				<tr>
+					<td style="text-align: center;" colspan="3"> <%= flash[:notice] %> </td>
+				</tr>
+			</table>
+			<% end %>
+		</td>
+	</tr>

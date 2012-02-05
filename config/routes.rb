@@ -8,10 +8,18 @@ Timetable::Application.routes.draw do
   match "/logout" => "login#destroy", :as => "logout"
   
   match "/admin" => "admin#index", :as => "admin"
-  match "/admin/new_teacher" => "admin#new_teacher", :as => "admin_new_teacher"
-  match "/admin/save_teacher" => "admin#save_teacher", :as => "admin_save_teacher", :via => :post
+  match "/admin/new_teacher" => "teacher#new_teacher", :as => "admin_new_teacher"
+  match "/admin/save_teacher" => "teacher#save_teacher", :as => "admin_save_teacher", :via => :post
+  match "/admin/edit_teacher/show" => "teacher#edit_teacher", :as => "admin_show_edit_teacher"
+  match "/admin/edit_teacher/:id" => "teacher#edit_teacher", :as => "admin_edit_teacher"
+  match "/admin/delete_teacher/:id" => "teacher#delete_teacher", :as => "admin_delete_teacher"
+  
+  match "/admin/edit_timesheet" => "timesheets#edit", :as => "admin_edit_timesheet"
+  match "/admin/save_timesheet" => "timesheets#save", :as => "admin_save_timesheet"
+  match "/admin/timesheet" => "timesheets#index", :as => "admin_timesheet"
   
   match "/teacher" => "teacher#index", :as => "teacher"
+  match "/teacher/timesheet/:id" => "timesheets#index", :as => "teacher_timesheet"
   
   resources :users, :courses, :course_types, :hours, :teaches, :roles, :wishes, :timesheets
 
