@@ -7,10 +7,18 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 role = Role.create(:permission => 'admin')
-
 user = User.create(:name => 'admin', :password => '1234')
 user.role = role
 user.save
+
+role2 = Role.create(:permission => 'teacher')
+user2 = User.create(:name => 'teacher', :password => '1234')
+user2.role = role2
+user2.save
+
+CourseType.create(:name => "Lecture")
+CourseType.create(:name => "Lab")
+CourseType.create(:name => "Seminar")
 
 tought_courses_per_week = (0..30).to_a
 6.times do |i|
